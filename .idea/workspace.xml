@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="432f079b-a88e-4876-8146-59108e1e969a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/2017/01/07/hello-world/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/2017/01/07/hello-world2/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/archives/2017/01/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/archives/2017/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.deploy_git" afterPath="$PROJECT_DIR$/.deploy_git" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/spfk" afterPath="$PROJECT_DIR$/themes/spfk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.json" afterPath="$PROJECT_DIR$/db.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +25,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+            <state relative-caret-position="272">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mobile-nav.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/mobile-nav.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="email.styl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/source/css/_partial/email.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="left-col.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/left-col.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="66" column="59" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -52,12 +75,13 @@
       <list>
         <option value="$PROJECT_DIR$/themes/spfk/layout/_partial/left-col.ejs" />
         <option value="$PROJECT_DIR$/themes/spfk/source/css/style.styl" />
-        <option value="$PROJECT_DIR$/themes/spfk/source/css/_partial/email.styl" />
         <option value="$PROJECT_DIR$/source/_posts/yarn.md" />
         <option value="$PROJECT_DIR$/source/_posts/efficientQuestion.md" />
         <option value="$PROJECT_DIR$/themes/spfk/_config.yml" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/spfk/source/css/_partial/email.styl" />
+        <option value="$PROJECT_DIR$/themes/spfk/layout/_partial/mobile-nav.ejs" />
       </list>
     </option>
   </component>
@@ -448,7 +472,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483793186516</updated>
-      <workItem from="1483793188854" duration="1923000" />
+      <workItem from="1483793188854" duration="2432000" />
     </task>
     <task id="LOCAL-00001" summary="提交文档">
       <created>1483794606236</created>
@@ -464,11 +488,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483794722425</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改为SSH">
+      <created>1483795121721</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1483795121721</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1923000" />
+    <option name="totallyTimeSpent" value="2432000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -508,7 +539,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交文档" />
+    <MESSAGE value="修改为SSH" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改为SSH" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -539,14 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/spfk/source/css/_partial/email.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/yarn.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -559,14 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/left-col.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -597,8 +613,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        <state relative-caret-position="272">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/left-col.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="66" column="59" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/source/css/_partial/email.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/mobile-nav.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
           <folding />
         </state>
       </provider>
