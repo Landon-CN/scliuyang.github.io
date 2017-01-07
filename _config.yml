@@ -68,6 +68,4 @@ theme: spfk
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-    repository: https://github.com/scliuyang/scliuyang.github.io.git
-    branch: master
+  type:
