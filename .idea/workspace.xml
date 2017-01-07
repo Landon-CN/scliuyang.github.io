@@ -1,190 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/_config.yml" line="20" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="be7c8625-88cb-4bf3-b40b-541ab7c40205" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/2017/01/07/hello-world/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/apple-touch-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/archives/2017/01/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/archives/2017/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/archives/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-10.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-109.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-111.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-12.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-13.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-14.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-15.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-16.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-17.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-18.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-19.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-20.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-21.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-22.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-23.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-24.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-7.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg-9.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/background/bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/css/loading-style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/css/pace/pace-theme-flash.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/css/showshare.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/fancybox_loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/fancybox_loading@2x.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/fancybox_overlay.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/fancybox_sprite.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/fancybox_sprite@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/fancybox_buttons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/jquery.fancybox-buttons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/jquery.fancybox-buttons.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/jquery.fancybox-media.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/jquery.fancybox-thumbs.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/helpers/jquery.fancybox-thumbs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/jquery.fancybox.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/jquery.fancybox.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/fancybox/jquery.fancybox.pack.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/css/font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/coderwall.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/delicious.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/douban.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/favicon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/github.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/google.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/head.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/img-err.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/img-loading.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/instagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/linkedin.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/mail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/pinboard.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/pinterest.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/qq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/rss.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/scrollbar_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/segmentfault.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/stackoverflow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/wechat.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/weibo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/img/zhihu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/404/jquery-2.0.3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/404/jquery.parallaxify-0.0.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/TweenMax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/TweenMax.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/clipboard.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/embed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/instagram.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/jquery.lazyload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/mobile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/pace.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/pc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/js/plugins.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/imgshare.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/like.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/select_share.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_popup.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style0_16.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style0_24.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style0_32.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style1_16.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style1_24.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style1_32.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style2.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style2_16.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style2_24.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style2_32.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/share_style4.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/slide_share.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/css/weixin_popup.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_0_16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_0_24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_0_32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_1_16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_1_24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_1_32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_2_16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_2_24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/icons_2_32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l0.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l1.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l2.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l3.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l4.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l5.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l6.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l7.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/l8.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/pop_c.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r0.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r1.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r2.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r3.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r4.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r5.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r6.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r7.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/r8.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/sc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/selectshare_close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/img/share/share-search-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/base/class.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/base/tangram.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/animate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/anticheat.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/comm_tools.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/partners.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/pop_base.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/pop_dialog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/pop_popup.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/pop_popup_slide.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/component/qrcode.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/conf/const.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/conf/define.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/api_base.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/combine_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/image_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/like_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/likeshare.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/select_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/share_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/share/slide_api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/start/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/logger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/trans.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/trans_bdxc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/trans_bdysc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/trans/trans_weixin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/image_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/like_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/select_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/share_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/slide_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.deploy_git/static/api/js/view/view_base.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/head1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/2017/01/07/hello-world2/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/404/index-1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/404/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CNAME" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/404/index-1.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/404/index.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/CNAME" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/_posts/hello-world2.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.deploy_git" afterPath="$PROJECT_DIR$/.deploy_git" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/favicon.png" afterPath="$PROJECT_DIR$/public/img/favicon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/head.jpg" afterPath="$PROJECT_DIR$/public/img/head.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/spfk" afterPath="$PROJECT_DIR$/themes/spfk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/font-awesome/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/font-awesome/fonts/fontawesome-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.json" afterPath="$PROJECT_DIR$/db.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/2017/01/07/hello-world/index.html" afterPath="$PROJECT_DIR$/public/2017/01/07/hello-world/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/archives/2017/01/index.html" afterPath="$PROJECT_DIR$/public/archives/2017/01/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/archives/2017/index.html" afterPath="$PROJECT_DIR$/public/archives/2017/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/archives/index.html" afterPath="$PROJECT_DIR$/public/archives/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -205,11 +46,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+            <state relative-caret-position="123">
+              <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="head1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/source/img/head1.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="149" column="16" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/footer.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="53" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="head.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/head.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/page.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/404/index.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CNAME" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/CNAME">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hello-world2.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/hello-world2.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -231,7 +149,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/source/_posts/hello-world.md" />
+        <option value="$PROJECT_DIR$/source/CNAME" />
         <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/spfk/layout/_partial/head.ejs" />
+        <option value="$PROJECT_DIR$/themes/spfk/_config.yml" />
       </list>
     </option>
   </component>
@@ -305,6 +226,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\blog\themes\spfk\source\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\blog\themes\spfk\layout\_partial" />
+      <recent name="D:\project\blog\source\_posts" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -606,23 +536,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483784135864</updated>
-      <workItem from="1483784137177" duration="3491000" />
+      <workItem from="1483784137177" duration="7515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3491000" />
+    <option name="totallyTimeSpent" value="7515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -631,7 +562,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -726,10 +656,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/CNAME">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/hello-world2.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="0" column="819" selection-start-line="0" selection-start-column="819" selection-end-line="0" selection-end-column="819" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/img/head.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/source/img/head1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/source/img/head.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/source/img/favicon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+        <state relative-caret-position="123">
+          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/analytics/baidu-analytics.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/page.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/404/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/baidu-analytics.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/head.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/layout/_partial/footer.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="53" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/spfk/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="149" column="16" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
           <folding />
         </state>
       </provider>

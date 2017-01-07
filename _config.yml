@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
+title: scliuyang's blog
+subtitle: 呆萌呆萌的前端攻城狮，偶尔也玩玩nodejs
+description: 学习总结 前端 全栈
+author: scliuyang
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://scliuyang.github.io/
+url: http://www.lyfantuan.com/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
