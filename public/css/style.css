@@ -4472,3 +4472,7 @@ pre .link_url {
   -ms-transition-delay: 0.15s;
   transition-delay: 0.15s;
 }
+#email {
+  width: 300px;
+  margin: 10px auto;
+}
