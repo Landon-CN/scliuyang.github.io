@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何进行高效的提问 | scliuyang&#39;s blog</title>
+  <title>Chrome Developers Tools调试篇 | scliuyang&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="高效提问是有效沟通的第一步，在工作中经常碰到因为低效提问或无效提问浪费大量的时间，增加沟通成本，本文希望能提高大家提问水平，给大家一点启发。">
+  <meta name="description" content="带领大家进入一个不一样的DEBUG世界">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何进行高效的提问">
-<meta property="og:url" content="http://www.lyfantuan.com/2016/11/02/efficientQuestion/index.html">
+<meta property="og:title" content="Chrome Developers Tools调试篇">
+<meta property="og:url" content="http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/index.html">
 <meta property="og:site_name" content="scliuyang's blog">
-<meta property="og:description" content="高效提问是有效沟通的第一步，在工作中经常碰到因为低效提问或无效提问浪费大量的时间，增加沟通成本，本文希望能提高大家提问水平，给大家一点启发。">
-<meta property="og:image" content="http://i1.piimg.com/4851/af33576d07d67166.png">
-<meta property="og:updated_time" content="2017-01-08T07:29:50.000Z">
+<meta property="og:description" content="带领大家进入一个不一样的DEBUG世界">
+<meta property="og:image" content="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/3920146e9d266dc5.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/9add632b45c8ed26.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2d9b88b9448aa1f2.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2ab7aff5f6143dd0.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2e5acf20be9e8265.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/f80bb26070ecb61a.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/24e1d4f8b74009f9.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/93d049609bfd4139.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/99e998a3dc0996eb.gif">
+<meta property="og:updated_time" content="2017-01-09T02:53:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何进行高效的提问">
-<meta name="twitter:description" content="高效提问是有效沟通的第一步，在工作中经常碰到因为低效提问或无效提问浪费大量的时间，增加沟通成本，本文希望能提高大家提问水平，给大家一点启发。">
-<meta name="twitter:image" content="http://i1.piimg.com/4851/af33576d07d67166.png">
+<meta name="twitter:title" content="Chrome Developers Tools调试篇">
+<meta name="twitter:description" content="带领大家进入一个不一样的DEBUG世界">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg">
   
     <link rel="alternative" href="/atom.xml" title="scliuyang&#39;s blog" type="application/atom+xml">
   
@@ -185,11 +194,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-efficientQuestion" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ChromeDevTools2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/02/efficientQuestion/" class="article-date">
-      <time datetime="2016-11-02T08:32:00.000Z" itemprop="datePublished">2016-11-02</time>
+      <a href="/2016/05/16/ChromeDevTools2/" class="article-date">
+      <time datetime="2016-05-16T08:32:00.000Z" itemprop="datePublished">2016-05-16</time>
 </a>
     </div>
   
@@ -202,7 +211,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何进行高效的提问
+      Chrome Developers Tools调试篇
     </h1>
   
 
@@ -217,7 +226,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提问/">提问</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效的提问/">高效的提问</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome-Developers-Tools/">Chrome Developers Tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevTools/">DevTools</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -227,66 +236,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>高效提问是有效沟通的第一步，在工作中经常碰到因为低效提问或无效提问浪费大量的时间，增加沟通成本，本文希望能提高大家提问水平，给大家一点启发。</p>
+        <p>带领大家进入一个不一样的DEBUG世界</p>
 <a id="more"></a>
-<h2 id="好坏问题对比"><a href="#好坏问题对比" class="headerlink" title="好坏问题对比"></a>好坏问题对比</h2><p><code>坏问题1：在不在？</code></p>
-<blockquote>
-<p>小明: 在不在？    10:23<br>小红: 在。    11:01<br>小明: 想请教你一个问题可以不？    11:50<br>小红: 可以，说吧。    14:20<br>小明: XX项目是你在维护么？ 15:00<br>小红: 是的。 15:20<br>小明: 巴拉巴拉开始说问题 15:30</p>
-</blockquote>
-<p>点评： 首先小明从上午10:23开始提问，一直到下午15:30才真正的描述问题，此前一直是在进行一些没有啥营养的话，浪费精力。</p>
-<p><code>改进版</code></p>
-<blockquote>
-<p>小明: 你好，请问你是XX项目的维护人么？我这里有XXX问题，无法找到解决方式，能提供下帮助么？ 10:23<br>小红: 这个问题可以参照XXX文档即可解决 11:02</p>
-</blockquote>
-<p><code>坏问题2：不看提示，张嘴就问</code></p>
-<blockquote>
-<p>小明：帮忙看下XX项目发布失败<br>小张：给下发布日志<br>小明：XXXX<br>小张：日志上说了XX版本有误，更换下就好了</p>
-</blockquote>
-<p>点评：一些问题其实已经在提示中暴露出来了，花点时间仔细读一读，想一想大部分问题都会迎刃而解</p>
-<p><code>坏问题3：无现象，自己的猜测</code></p>
-<blockquote>
-<p>Q:最近**系统有什么变动吗？<br>A:（这类问题一般都不乐意回答）</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Q:现在公司DNS服务不正常吗？<br>A:….</p>
-</blockquote>
-<p>点评：把现象描述清楚，一通瞎猜别人也不知道问题在哪</p>
-<h2 id="如何提一个好问题"><a href="#如何提一个好问题" class="headerlink" title="如何提一个好问题"></a>如何提一个好问题</h2><h3 id="预设观点"><a href="#预设观点" class="headerlink" title="预设观点"></a>预设观点</h3><ul>
-<li>高手喜欢帮助大家解决艰巨的任务</li>
-<li>高手不傲慢，只是对那些懒于动脑的人比较傲慢</li>
-<li>百分之九十的问题，想清楚如何提问之前，就找到了答案</li>
-</ul>
-<h3 id="提问前"><a href="#提问前" class="headerlink" title="提问前"></a>提问前</h3><h4 id="自己找答案"><a href="#自己找答案" class="headerlink" title="自己找答案"></a>自己找答案</h4><ul>
-<li>内网资料库往往会有一些意外惊喜</li>
-<li>阅读相关项目的文档或错误指南（尤其是入门问题）</li>
-<li>百分之九十的问题，想清楚如何提问之前，就找到了答案</li>
-</ul>
-<h4 id="提问前注意要点"><a href="#提问前注意要点" class="headerlink" title="提问前注意要点"></a>提问前注意要点</h4><ul>
-<li>提问之前明白自己做什么</li>
-<li>周全的准备你的问题</li>
-<li>打算为此问题做点什么</li>
-<li>别问自己应该解决的问题</li>
-</ul>
-<h4 id="怎样提问"><a href="#怎样提问" class="headerlink" title="怎样提问"></a>怎样提问</h4><ul>
-<li>选择合适的提问方式</li>
-<li>用题贴切，语法正确</li>
-<li>使用描述准确，含义丰富的标题</li>
-<li>精确描述，信息量大<ul>
-<li>精确有效的描述信息（比如日志和异常栈）</li>
-<li>只说症状，不说自己的猜想（带上一些错误的截图）</li>
-<li>按时间顺序列出症状</li>
-<li>最好加上一些非常规的北京信息</li>
-<li>明白自己想要问什么</li>
-</ul>
-</li>
-<li>提问态度要好，明白别人是帮助你而不是服务你</li>
-</ul>
-<h4 id="提问后"><a href="#提问后" class="headerlink" title="提问后"></a>提问后</h4><ul>
-<li>及时总结成文章之类的，方便后面的人查看</li>
-</ul>
-<h3 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h3><p>最后附上一张提问的思维导图，方便大家查阅<br><img src="http://i1.piimg.com/4851/af33576d07d67166.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.jianshu.com/p/60dd8e9cd12f" target="_blank" rel="external">提问的智慧(中文版)</a></p>
+<h1 id="Chrome开发工具调试篇"><a href="#Chrome开发工具调试篇" class="headerlink" title="Chrome开发工具调试篇"></a>Chrome开发工具调试篇</h1><p>上一篇给大家介绍了一下Chrome Dev Tools的基本用法，这篇交大家如何调试javascript程序</p>
+<h2 id="目录面板"><a href="#目录面板" class="headerlink" title="目录面板"></a>目录面板</h2><p><img src="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg" style="width:500px;"><br>可以看到上图有3个导航条，他们都存有不同域名和环境下的js和css文件。<br>Sources:包含当前网页用到的资源目录<br>Content scripts: 插件程序所在的位置<br>Snippets: 它的主要作用可以使得我们编写一些项目的测试代码时提供便捷，你知道，如果你在编辑器上编写这些代码，在发布时你必须为它们添加注释符号或者手动删除它们，而在浏览器上编写就不需要这样繁琐了。</p>
+<p>还有一个很有用的特性就是：Workspace，这个特性可以把dev tools变成代码编辑工具，首先我们来看看怎么使用这个特性<br><img src="http://p1.bqimg.com/567571/3920146e9d266dc5.gif" style="width:500px;"></p>
+<ol>
+<li>在sources面板右键，选择add folder to workspace,选中项目目录</li>
+<li>随便选择一个项目文件，右键选择map to file system resource，选中相应的文件，这样所有的文件都会根据目录依次对应起来。</li>
+</ol>
+<p>这样几步后workspace特性就算使用起来了，现在编辑文件都会保存到文件当中非常方便，而且当你在elemnt面板调试css时也会同步将值保存到文件当中。</p>
+<h2 id="调试面板"><a href="#调试面板" class="headerlink" title="调试面板"></a>调试面板</h2><h3 id="断点方式"><a href="#断点方式" class="headerlink" title="断点方式"></a>断点方式</h3><p>打开需要调试的js文件，并且在对应的行数上右键可以看到以下选择项<br><img src="http://p1.bqimg.com/567571/9add632b45c8ed26.jpg" style="width:500px;"><br>下面来依次说明选项的作用：<br>1.Blackbox Script : 黑盒文件调试法，将此文件设置为黑盒，这样在调试时将不会进入这个文件<br><img src="http://p1.bqimg.com/567571/2d9b88b9448aa1f2.gif" style="width:500px;"><br><img src="http://p1.bqimg.com/567571/2ab7aff5f6143dd0.gif" style="width:500px;"><br>可以看到，黑盒模式下的文件用户是无法进入的，所以在调试时可以将一些库文件设置为黑盒模式，这样调试将会清爽很多。<br>2.Add breakpoint ： 在这行添加断电<br>3.Add conditional breakpoint : 添加条件断点，只有在满足此条件的情况下才会断住程序<br><img src="http://p1.bqimg.com/567571/2e5acf20be9e8265.jpg" style="width:500px;"></p>
+<h3 id="断点信息"><a href="#断点信息" class="headerlink" title="断点信息"></a>断点信息</h3><p><img src="http://p1.bqimg.com/567571/f80bb26070ecb61a.jpg" style="width:300px;"><br>最上面一排按钮是控制当前断点，他们分别代表<br>1、停止断点调试<br>2、不跳入函数中去，继续执行下一行代码（F10）<br>3、跳入函数中去（F11）<br>4、从执行的函数中跳出<br>5、禁用所有的断点，不做任何调试<br>6、程序运行时遇到异常时是否中断的开关<br>7、断点是处以异步操作内部时比如ajax请求，是否记录异步操作之前的堆栈信息</p>
+<p>watch面板，可以自定义表达式并查看结果<br><img src="http://p1.bqimg.com/567571/24e1d4f8b74009f9.jpg" style="width:300px;"></p>
+<p>call stack面板，记录当前断点的堆栈信息，并且可以通过点击堆栈还原到上一个调用现场.<br><img src="http://p1.bqimg.com/567571/93d049609bfd4139.gif" style="width:500px;"><br>这里也可以配合黑盒模式，去掉jquery库的干扰信息<br><img src="http://p1.bqimg.com/567571/99e998a3dc0996eb.gif" style="width:500px;"></p>
+<p>Scope，记录当前断点变量的值<br>Breakponts,记录所有断点的位置<br>Dom breakpoints,添加的Dom监控信息。<br>XHR breakpoints 击+ 并输入 URL 包含的字符串即可监听该 URL 的 Ajax 请求，输入内容就相当于 URL 的过滤器。如果什么都不填，那么就监听所有 XHR 请求。一旦 XHR 调用触发时就会在 request.send() 的地方中断。<br>Event Listener Breakpoints 为网页添加各种类型的断点信息。如选中了Mouse中的某一项（click），当你在网页上出发这个动作（单击网页任意地方），你浏览器就是立刻断点监控该事件</p>
 
       
     </div>
@@ -295,13 +259,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/02/efficientQuestion/">如何进行高效的提问</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/16/ChromeDevTools2/">Chrome Developers Tools调试篇</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 scliuyang 的个人博客">scliuyang</a></p>
-        <p><span>发布时间:</span>2016年11月02日 - 16时32分</p>
-        <p><span>最后更新:</span>2017年01月08日 - 15时29分</p>
+        <p><span>发布时间:</span>2016年05月16日 - 16时32分</p>
+        <p><span>最后更新:</span>2017年01月09日 - 10时53分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/02/efficientQuestion/" title="如何进行高效的提问">http://www.lyfantuan.com/2016/11/02/efficientQuestion/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.lyfantuan.com/2016/11/02/efficientQuestion/　　作者: scliuyang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/16/ChromeDevTools2/" title="Chrome Developers Tools调试篇">http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/　　作者: scliuyang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -314,18 +278,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/11/30/yarn/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/16/ChromeDevTools1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          js新的包管理工具yarn
+          Chrome Developers Tools基础篇
         
       </div>
     </a>
   
   
-    <a href="/2016/05/16/ChromeDevTools1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Chrome Developers Tools基础篇</div>
+    <a href="/2016/05/16/ChromeDevTools3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分析timeline提升页面性能</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -336,7 +300,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#好坏问题对比"><span class="toc-number">1.</span> <span class="toc-text">好坏问题对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何提一个好问题"><span class="toc-number">2.</span> <span class="toc-text">如何提一个好问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预设观点"><span class="toc-number">2.1.</span> <span class="toc-text">预设观点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提问前"><span class="toc-number">2.2.</span> <span class="toc-text">提问前</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自己找答案"><span class="toc-number">2.2.1.</span> <span class="toc-text">自己找答案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提问前注意要点"><span class="toc-number">2.2.2.</span> <span class="toc-text">提问前注意要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎样提问"><span class="toc-number">2.2.3.</span> <span class="toc-text">怎样提问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提问后"><span class="toc-number">2.2.4.</span> <span class="toc-text">提问后</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思维导图"><span class="toc-number">2.3.</span> <span class="toc-text">思维导图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome开发工具调试篇"><span class="toc-number">1.</span> <span class="toc-text">Chrome开发工具调试篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录面板"><span class="toc-number">1.1.</span> <span class="toc-text">目录面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试面板"><span class="toc-number">1.2.</span> <span class="toc-text">调试面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#断点方式"><span class="toc-number">1.2.1.</span> <span class="toc-text">断点方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断点信息"><span class="toc-number">1.2.2.</span> <span class="toc-text">断点信息</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -384,7 +348,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/11/02/efficientQuestion/" data-title="如何进行高效的提问" data-url="http://www.lyfantuan.com/2016/11/02/efficientQuestion/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/16/ChromeDevTools2/" data-title="Chrome Developers Tools调试篇" data-url="http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -407,13 +371,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/30/yarn/" title="上一篇: js新的包管理工具yarn">
+            <a href="/2016/05/16/ChromeDevTools1/" title="上一篇: Chrome Developers Tools基础篇">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/05/16/ChromeDevTools1/" title="下一篇: Chrome Developers Tools基础篇">
+            <a href="/2016/05/16/ChromeDevTools3/" title="下一篇: 分析timeline提升页面性能">
                 <i class="fa fa-angle-right"></i>
             </a>
         
