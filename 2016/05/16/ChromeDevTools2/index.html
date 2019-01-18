@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Chrome Developers Tools调试篇 | scliuyang&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="带领大家进入一个不一样的DEBUG世界">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome Developers Tools调试篇">
+<meta property="og:url" content="http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/index.html">
+<meta property="og:site_name" content="scliuyang's blog">
+<meta property="og:description" content="带领大家进入一个不一样的DEBUG世界">
+<meta property="og:image" content="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/3920146e9d266dc5.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/9add632b45c8ed26.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2d9b88b9448aa1f2.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2ab7aff5f6143dd0.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/2e5acf20be9e8265.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/f80bb26070ecb61a.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/24e1d4f8b74009f9.jpg">
+<meta property="og:image" content="http://p1.bqimg.com/567571/93d049609bfd4139.gif">
+<meta property="og:image" content="http://p1.bqimg.com/567571/99e998a3dc0996eb.gif">
+<meta property="og:updated_time" content="2017-01-09T02:53:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chrome Developers Tools调试篇">
+<meta name="twitter:description" content="带领大家进入一个不一样的DEBUG世界">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="scliuyang&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+  
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?ff9cbce5fd8cebe99ed7ca649cee5465";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">scliuyang</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">呆萌呆萌的前端攻城狮，常年沉浸在nodejs中不能自拔</p>
+        
+        
+        
+
+        <div class="email" id="email">
+            <span>联系方式: </span><span>mzefibp@163.com</span>
+        </div>
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/tags/docker">docker</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/scliuyang" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/liu-yang-97-99-44/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/">hexo</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱羽毛球 喜欢专研新技术</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger" style="display: none;"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">scliuyang</a></h1>
+      </div>
+
+
+
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">scliuyang</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">呆萌呆萌的前端攻城狮，常年沉浸在nodejs中不能自拔</p>
+            
+
+            <div class="email" id="email">
+                <span>联系方式: </span><span>mzefibp@163.com</span>
+            </div>
+
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/tags/docker">docker</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/scliuyang" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/liu-yang-97-99-44/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-ChromeDevTools2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/ChromeDevTools2/" class="article-date">
+      <time datetime="2016-05-16T08:32:00.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Chrome Developers Tools调试篇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/scliuyang/">scliuyang</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome-Developers-Tools/">Chrome Developers Tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevTools/">DevTools</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>带领大家进入一个不一样的DEBUG世界</p>
+<a id="more"></a>
+<h1 id="Chrome开发工具调试篇"><a href="#Chrome开发工具调试篇" class="headerlink" title="Chrome开发工具调试篇"></a>Chrome开发工具调试篇</h1><p>上一篇给大家介绍了一下Chrome Dev Tools的基本用法，这篇交大家如何调试javascript程序</p>
+<h2 id="目录面板"><a href="#目录面板" class="headerlink" title="目录面板"></a>目录面板</h2><p><img src="http://p1.bqimg.com/567571/e69fb6c1b50b80e9.jpg" style="width:500px;"><br>可以看到上图有3个导航条，他们都存有不同域名和环境下的js和css文件。<br>Sources:包含当前网页用到的资源目录<br>Content scripts: 插件程序所在的位置<br>Snippets: 它的主要作用可以使得我们编写一些项目的测试代码时提供便捷，你知道，如果你在编辑器上编写这些代码，在发布时你必须为它们添加注释符号或者手动删除它们，而在浏览器上编写就不需要这样繁琐了。</p>
+<p>还有一个很有用的特性就是：Workspace，这个特性可以把dev tools变成代码编辑工具，首先我们来看看怎么使用这个特性<br><img src="http://p1.bqimg.com/567571/3920146e9d266dc5.gif" style="width:500px;"></p>
+<ol>
+<li>在sources面板右键，选择add folder to workspace,选中项目目录</li>
+<li>随便选择一个项目文件，右键选择map to file system resource，选中相应的文件，这样所有的文件都会根据目录依次对应起来。</li>
+</ol>
+<p>这样几步后workspace特性就算使用起来了，现在编辑文件都会保存到文件当中非常方便，而且当你在elemnt面板调试css时也会同步将值保存到文件当中。</p>
+<h2 id="调试面板"><a href="#调试面板" class="headerlink" title="调试面板"></a>调试面板</h2><h3 id="断点方式"><a href="#断点方式" class="headerlink" title="断点方式"></a>断点方式</h3><p>打开需要调试的js文件，并且在对应的行数上右键可以看到以下选择项<br><img src="http://p1.bqimg.com/567571/9add632b45c8ed26.jpg" style="width:500px;"><br>下面来依次说明选项的作用：<br>1.Blackbox Script : 黑盒文件调试法，将此文件设置为黑盒，这样在调试时将不会进入这个文件<br><img src="http://p1.bqimg.com/567571/2d9b88b9448aa1f2.gif" style="width:500px;"><br><img src="http://p1.bqimg.com/567571/2ab7aff5f6143dd0.gif" style="width:500px;"><br>可以看到，黑盒模式下的文件用户是无法进入的，所以在调试时可以将一些库文件设置为黑盒模式，这样调试将会清爽很多。<br>2.Add breakpoint ： 在这行添加断电<br>3.Add conditional breakpoint : 添加条件断点，只有在满足此条件的情况下才会断住程序<br><img src="http://p1.bqimg.com/567571/2e5acf20be9e8265.jpg" style="width:500px;"></p>
+<h3 id="断点信息"><a href="#断点信息" class="headerlink" title="断点信息"></a>断点信息</h3><p><img src="http://p1.bqimg.com/567571/f80bb26070ecb61a.jpg" style="width:300px;"><br>最上面一排按钮是控制当前断点，他们分别代表<br>1、停止断点调试<br>2、不跳入函数中去，继续执行下一行代码（F10）<br>3、跳入函数中去（F11）<br>4、从执行的函数中跳出<br>5、禁用所有的断点，不做任何调试<br>6、程序运行时遇到异常时是否中断的开关<br>7、断点是处以异步操作内部时比如ajax请求，是否记录异步操作之前的堆栈信息</p>
+<p>watch面板，可以自定义表达式并查看结果<br><img src="http://p1.bqimg.com/567571/24e1d4f8b74009f9.jpg" style="width:300px;"></p>
+<p>call stack面板，记录当前断点的堆栈信息，并且可以通过点击堆栈还原到上一个调用现场.<br><img src="http://p1.bqimg.com/567571/93d049609bfd4139.gif" style="width:500px;"><br>这里也可以配合黑盒模式，去掉jquery库的干扰信息<br><img src="http://p1.bqimg.com/567571/99e998a3dc0996eb.gif" style="width:500px;"></p>
+<p>Scope，记录当前断点变量的值<br>Breakponts,记录所有断点的位置<br>Dom breakpoints,添加的Dom监控信息。<br>XHR breakpoints 击+ 并输入 URL 包含的字符串即可监听该 URL 的 Ajax 请求，输入内容就相当于 URL 的过滤器。如果什么都不填，那么就监听所有 XHR 请求。一旦 XHR 调用触发时就会在 request.send() 的地方中断。<br>Event Listener Breakpoints 为网页添加各种类型的断点信息。如选中了Mouse中的某一项（click），当你在网页上出发这个动作（单击网页任意地方），你浏览器就是立刻断点监控该事件</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/16/ChromeDevTools2/">Chrome Developers Tools调试篇</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 scliuyang 的个人博客">scliuyang</a></p>
+        <p><span>发布时间:</span>2016年05月16日 - 16时32分</p>
+        <p><span>最后更新:</span>2017年01月09日 - 10时53分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/16/ChromeDevTools2/" title="Chrome Developers Tools调试篇">http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/　　作者: scliuyang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/05/16/ChromeDevTools1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Chrome Developers Tools基础篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/16/ChromeDevTools3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分析timeline提升页面性能</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome开发工具调试篇"><span class="toc-number">1.</span> <span class="toc-text">Chrome开发工具调试篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录面板"><span class="toc-number">1.1.</span> <span class="toc-text">目录面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试面板"><span class="toc-number">1.2.</span> <span class="toc-text">调试面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#断点方式"><span class="toc-number">1.2.1.</span> <span class="toc-text">断点方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断点信息"><span class="toc-number">1.2.2.</span> <span class="toc-text">断点信息</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/16/ChromeDevTools2/" data-title="Chrome Developers Tools调试篇" data-url="http://www.lyfantuan.com/2016/05/16/ChromeDevTools2/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyfantuan"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/16/ChromeDevTools1/" title="上一篇: Chrome Developers Tools基础篇">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/16/ChromeDevTools3/" title="下一篇: 分析timeline提升页面性能">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/docker/">初识docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/yarn/">js新的包管理工具yarn</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/02/efficientQuestion/">如何进行高效的提问</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools1/">Chrome Developers Tools基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools2/">Chrome Developers Tools调试篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools3/">分析timeline提升页面性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools4/">内存泄露分析</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 scliuyang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?ff9cbce5fd8cebe99ed7ca649cee5465";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
