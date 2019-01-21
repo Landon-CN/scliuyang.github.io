@@ -1,244 +1,424 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <title>分析timeline提升页面性能 | scliuyang&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
   <meta name="description" content="学习怎样通过DevTools诊断由于强制布局引起的性能问题">
+<meta name="keywords" content="Chrome Developers Tools,Debug,DevTools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分析timeline提升页面性能">
-<meta property="og:url" content="http://www.lyfantuan.com/2016/05/16/ChromeDevTools3/index.html">
-<meta property="og:site_name" content="scliuyang's blog">
+<meta property="og:url" content="https://scliuyang.github.io/2016/05/16/ChromeDevTools3/index.html">
+<meta property="og:site_name" content="技术小站">
 <meta property="og:description" content="学习怎样通过DevTools诊断由于强制布局引起的性能问题">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/31.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/32.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/33.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/34.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/35.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/36.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/37.png">
-<meta property="og:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/39.png">
-<meta property="og:updated_time" content="2016-05-17T12:52:30.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/31.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/32.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/33.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/34.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/35.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/36.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/37.png">
+<meta property="og:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/39.png">
+<meta property="og:updated_time" content="2019-01-17T12:42:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分析timeline提升页面性能">
 <meta name="twitter:description" content="学习怎样通过DevTools诊断由于强制布局引起的性能问题">
-<meta name="twitter:image" content="http://www.lyfantuan.com/uploads/scliuyang/ChromeDevTools/31.png">
+<meta name="twitter:image" content="https://scliuyang.github.io/uploads/scliuyang/ChromeDevTools/31.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://scliuyang.github.io/2016/05/16/ChromeDevTools3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>分析timeline提升页面性能 | 技术小站</title>
   
-    <link rel="alternative" href="/atom.xml" title="scliuyang&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
-  
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?ff9cbce5fd8cebe99ed7ca649cee5465";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.jpg" class="js-avatar">
-            
-        </a>
 
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate">scliuyang</a></h1>
-        </hgroup>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-        
-        <p class="header-subtitle">呆萌呆萌的前端攻城狮，常年沉浸在nodejs中不能自拔</p>
-        
-        
-        
+  
+  
+    
+  
 
-        <div class="email" id="email">
-            <span>联系方式: </span><span>mzefibp@163.com</span>
-        </div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">博客首页</a></li>
-                        
-                            <li><a href="/tags/docker">docker</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/scliuyang" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/liu-yang-97-99-44/activities" title="zhihu">zhihu</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io/">hexo</a>
-                    
-                    </div>
-                </section>
-                
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
 
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">爱羽毛球 喜欢专研新技术</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">技术小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">全栈学习总结</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger" style="display: none;"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">scliuyang</a></h1>
-      </div>
 
 
 
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">scliuyang</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">呆萌呆萌的前端攻城狮，常年沉浸在nodejs中不能自拔</p>
-            
-
-            <div class="email" id="email">
-                <span>联系方式: </span><span>mzefibp@163.com</span>
-            </div>
-
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">博客首页</a></li>
-                
-                    <li><a href="/tags/docker">docker</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/scliuyang" title="github">github</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/liu-yang-97-99-44/activities" title="zhihu">zhihu</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-      <div class="body-wrap"><article id="post-ChromeDevTools3" class="article article-type-post" itemscope itemprop="blogPost">
+<nav class="site-nav">
   
-    <div class="article-meta">
-      <a href="/2016/05/16/ChromeDevTools3/" class="article-date">
-      <time datetime="2016-05-16T08:32:00.000Z" itemprop="datePublished">2016-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      分析timeline提升页面性能
-    </h1>
-  
-
-      </header>
+    <ul id="menu" class="menu">
       
-      <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/scliuyang/">scliuyang</a>
-    </div>
-
-
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome-Developers-Tools/">Chrome Developers Tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevTools/">DevTools</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
           
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档页</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://scliuyang.github.io/2016/05/16/ChromeDevTools3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="scliuyang">
+      <meta itemprop="description" content="学习总结 前端 全栈 web js css html node">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="技术小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分析timeline提升页面性能
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-05-16 16:32:00" itemprop="dateCreated datePublished" datetime="2016-05-16T16:32:00+08:00">2016-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-17 20:42:25" itemprop="dateModified" datetime="2019-01-17T20:42:25+08:00">2019-01-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/scliuyang/" itemprop="url" rel="index"><span itemprop="name">scliuyang</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         <p>学习怎样通过DevTools诊断由于强制布局引起的性能问题</p>
 <a id="more"></a>
 <h1 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h1><p>首先，你需要捕获数据来确定到底在你的页面运行期间发生了什么。</p>
 <ol>
-<li>打开<a href="https://googlesamples.github.io/web-fundamentals/samples/tools/chrome-devtools/profile/rendering-tools/forcedsync.html" target="_blank" rel="external">demo</a></li>
+<li>打开<a href="https://googlesamples.github.io/web-fundamentals/samples/tools/chrome-devtools/profile/rendering-tools/forcedsync.html" target="_blank" rel="noopener">demo</a></li>
 <li>打开Timeline面板</li>
 <li>打开js profile选项，这样我们将会看到函数的调用情况</li>
 <li>点击start按钮来开始动画</li>
@@ -252,249 +432,393 @@
 <p>现在集中你的注意力，找到在update event下的紫色条，这些紫色条大部分都会有一个红色的标记，这警告的标志。鼠标放上去你会看到DevTools警告你的页面有forced reflow,强制浏览器重新布局<br><img src="/uploads/scliuyang/ChromeDevTools/35.png" style="width:500px;"><br>现在我们来看看引起forced reflow的函数，点击一个紫色柱子，在Summary面板你会看到这个事件的详细信息，点击Layout Forced (update @ forcedsync.html:457)跳转到函数定义的地方<br><img src="/uploads/scliuyang/ChromeDevTools/36.png" style="width:500px;"><br>你将会在sources面板看到函数定义的地方<br><img src="/uploads/scliuyang/ChromeDevTools/37.png" style="width:500px;"></p>
 <p>这个函数基于每个图像的offsetTop值来计算left值。这将强制浏览器重排来保证获取正确的属性值。每次循环都强制重排，会导致动画卡顿。</p>
 <h1 id="修复问题"><a href="#修复问题" class="headerlink" title="修复问题"></a>修复问题</h1><p>因为获取offsetTop值时，会强制浏览器进行重排来保证值的正确性，所以去掉获取这句,如下所示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function update(timestamp) &#123;</div><div class="line">            for (var m = 0; m &lt; movers.length; m++) &#123;</div><div class="line">                movers[m].style.left = ((Math.sin(m +</div><div class="line">                    timestamp / 1000) + 1) * 500) +</div><div class="line">                 &apos;px&apos;;</div><div class="line">                // movers[m].style.left = ((Math.sin(m + timestamp/1000)+1) * 500) + &apos;px&apos;;</div><div class="line">                &#125;</div><div class="line">            raf = window.requestAnimationFrame(update);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function update(timestamp) &#123;</span><br><span class="line">            for (var m = 0; m &lt; movers.length; m++) &#123;</span><br><span class="line">                movers[m].style.left = ((Math.sin(m +</span><br><span class="line">                    timestamp / 1000) + 1) * 500) +</span><br><span class="line">                 &apos;px&apos;;</span><br><span class="line">                // movers[m].style.left = ((Math.sin(m + timestamp/1000)+1) * 500) + &apos;px&apos;;</span><br><span class="line">                &#125;</span><br><span class="line">            raf = window.requestAnimationFrame(update);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="重新测试"><a href="#重新测试" class="headerlink" title="重新测试"></a>重新测试</h1><p>修改完毕后，重新获取一次timeline来查看结果<br><img src="/uploads/scliuyang/ChromeDevTools/39.png" style="width:500px;"><br>可以看到每一帧都非常的平滑，满足60fps的要求</p>
 
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Chrome-Developers-Tools/" rel="tag"># Chrome Developers Tools</a>
+          
+            <a href="/tags/Debug/" rel="tag"># Debug</a>
+          
+            <a href="/tags/DevTools/" rel="tag"># DevTools</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/16/ChromeDevTools1/" rel="next" title="Chrome Developers Tools基础篇">
+                <i class="fa fa-chevron-left"></i> Chrome Developers Tools基础篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/02/efficientQuestion/" rel="prev" title="如何进行高效的提问">
+                如何进行高效的提问 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/16/ChromeDevTools3/">分析timeline提升页面性能</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 scliuyang 的个人博客">scliuyang</a></p>
-        <p><span>发布时间:</span>2016年05月16日 - 16时32分</p>
-        <p><span>最后更新:</span>2016年05月17日 - 20时52分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/16/ChromeDevTools3/" title="分析timeline提升页面性能">http://www.lyfantuan.com/2016/05/16/ChromeDevTools3/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.lyfantuan.com/2016/05/16/ChromeDevTools3/　　作者: scliuyang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-<nav id="article-nav">
-  
-    <a href="/2016/05/16/ChromeDevTools2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Chrome Developers Tools调试篇
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/05/16/ChromeDevTools4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">内存泄露分析</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
 
   
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#获取数据"><span class="toc-number">1.</span> <span class="toc-text">获取数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#确定问题"><span class="toc-number">2.</span> <span class="toc-text">确定问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修复问题"><span class="toc-number">3.</span> <span class="toc-text">修复问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重新测试"><span class="toc-number">4.</span> <span class="toc-text">重新测试</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
 
 
 
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-      <div class="duoshuo" id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/16/ChromeDevTools3/" data-title="分析timeline提升页面性能" data-url="http://www.lyfantuan.com/2016/05/16/ChromeDevTools3/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"lyfantuan"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = '/js/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-    <!-- 多说公共JS代码 end -->
-</div>
-
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/05/16/ChromeDevTools2/" title="上一篇: Chrome Developers Tools调试篇">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2016/05/16/ChromeDevTools4/" title="下一篇: 内存泄露分析">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/docker/">初识docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/yarn/">js新的包管理工具yarn</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/02/efficientQuestion/">如何进行高效的提问</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools1/">Chrome Developers Tools基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools2/">Chrome Developers Tools调试篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools3/">分析timeline提升页面性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/ChromeDevTools4/">内存泄露分析</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2017 scliuyang
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
         </div>
         
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-</footer>
-
-    </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-
-
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?ff9cbce5fd8cebe99ed7ca649cee5465";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
-
-
   </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">scliuyang</p>
+              <p class="site-description motion-element" itemprop="description">学习总结 前端 全栈 web js css html node</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取数据"><span class="nav-number">1.</span> <span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确定问题"><span class="nav-number">2.</span> <span class="nav-text">确定问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修复问题"><span class="nav-number">3.</span> <span class="nav-text">修复问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重新测试"><span class="nav-number">4.</span> <span class="nav-text">重新测试</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">scliuyang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
