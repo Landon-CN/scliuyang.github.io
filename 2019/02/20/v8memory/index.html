@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="主要给大家带来nodejs中v8引擎的内存控制以及泄漏排查">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs内存控制">
+<meta property="og:url" content="https://scliuyang.github.io/2019/02/20/v8memory/index.html">
+<meta property="og:site_name" content="技术小站">
+<meta property="og:description" content="主要给大家带来nodejs中v8引擎的内存控制以及泄漏排查">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://p0.meituan.net/dpnewvc/382aa42eaeb4c6e54a13cd047f4fda1321204.png">
+<meta property="og:image" content="https://p0.meituan.net/dpnewvc/0db2a4798109a46b44cac2e30ff0388461957.png">
+<meta property="og:updated_time" content="2019-02-20T08:35:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs内存控制">
+<meta name="twitter:description" content="主要给大家带来nodejs中v8引擎的内存控制以及泄漏排查">
+<meta name="twitter:image" content="https://p0.meituan.net/dpnewvc/382aa42eaeb4c6e54a13cd047f4fda1321204.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://scliuyang.github.io/2019/02/20/v8memory/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nodejs内存控制 | 技术小站</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">技术小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">全栈学习总结</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档页</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://scliuyang.github.io/2019/02/20/v8memory/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="scliuyang">
+      <meta itemprop="description" content="学习总结 前端 全栈 web js css html node">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="技术小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nodejs内存控制
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-20 16:32:00 / Modified: 16:35:49" itemprop="dateCreated datePublished" datetime="2019-02-20T16:32:00+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/scliuyang/" itemprop="url" rel="index"><span itemprop="name">scliuyang</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>主要给大家带来nodejs中v8引擎的内存控制以及泄漏排查<br><a id="more"></a></p>
+<h1 id="为什么需要研究内存控制"><a href="#为什么需要研究内存控制" class="headerlink" title="为什么需要研究内存控制"></a>为什么需要研究内存控制</h1><p>过去很长一段时间内，JavaScript开发者很少会遇到对内存精确控制的场景，也缺乏控制手段。在浏览器里如果内存占用过多基本上用户都会等不及刷新网页，所以基本无需关注内存泄漏问题。<br>但是随着nodejs的发展，基于无阻塞、事件驱动建立的node服务具有内存消耗低的优点，非常适合处理海量的网络请求。在海量请求的前提下，开发者就需要关注一些平常不会形成影响的问题，比如一个简单字符串内存泄漏，在海量请求下就会导致内存大量溢出导致应用崩溃。<br>所以在服务端领域，内存控制正是在海量请求和长时间运行的前提下需要着重探讨的。</p>
+<h1 id="v8的垃圾回收机制与内存限制"><a href="#v8的垃圾回收机制与内存限制" class="headerlink" title="v8的垃圾回收机制与内存限制"></a>v8的垃圾回收机制与内存限制</h1><h2 id="v8的内存限制"><a href="#v8的内存限制" class="headerlink" title="v8的内存限制"></a>v8的内存限制</h2><p>v8的内存在32位系统下限制为0.7GB,64位下为1.4GB。为什么会有这个限制呢？首先V8设计之初就是为浏览器考虑的，在浏览器的开发场景下这套设计绰绰有余足以胜任前端页面中所有的需求。深层次的原因就是V8的垃圾回收机制的限制，以1.5GB的垃圾为例，V8做一次小的垃圾回收约50毫秒以上，做一次非增量式的垃圾回收甚至需要1秒以上。在垃圾回收中JavaScript线程暂停执行，在这样的时间花费下不仅仅后端无法接受，前端也无法接受。因此做出了内存限制这个决定。</p>
+<p>当然这个限制也可以通过参数打开，在node启动时传递如下参数。注意只在启动时生效，一旦启动不能修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node --max-old-space-size=<span class="number">1700</span> test.js <span class="comment">// 单位为MB</span></span><br><span class="line">node --max-<span class="keyword">new</span>-space-size=<span class="number">2014</span> test.js <span class="comment">// 单位为kb</span></span><br></pre></td></tr></table></figure>
+<h2 id="V8的垃圾回收"><a href="#V8的垃圾回收" class="headerlink" title="V8的垃圾回收"></a>V8的垃圾回收</h2><h3 id="V8的内存分代"><a href="#V8的内存分代" class="headerlink" title="V8的内存分代"></a>V8的内存分代</h3><p>在V8中，主要讲内存分为新生代和老生代。新生代中的对象存活时间比较短，老生代中的对象存活时间较长或常驻内存对象。</p>
+<p><img src="https://p0.meituan.net/dpnewvc/382aa42eaeb4c6e54a13cd047f4fda1321204.png" alt="内存分代"></p>
+<h3 id="新生代内存回收机制Scavenge算法"><a href="#新生代内存回收机制Scavenge算法" class="headerlink" title="新生代内存回收机制Scavenge算法"></a>新生代内存回收机制Scavenge算法</h3><p><code>Scavenge</code>实际采用的复制方式实现的垃圾回收算法，他将内存空间一分为二，一半称之为from空间,另一半称为to空间。当我们分配内存时先在from空间分配。当开始内存回收时，将存活对象复制到to空间中，释放from空间内存。完成后两个空间角色互换。</p>
+<p><code>Scavenge</code>的缺点是只能利用一半的内存，优点是只复制存活对象。由于新生代内存空间大部分都是非存活对象所以<code>Scavenge</code>算法在时间效率上有优异的表现。是典型的空间换时间算法。<br>当一个对象在新生代空间中多次回收后依然存在，则被认定为生命周期较长的对象，迁移至老生代内存空间中。</p>
+<h3 id="老生代内存回收机制-Mark-Sweep-amp-Mark-Compact"><a href="#老生代内存回收机制-Mark-Sweep-amp-Mark-Compact" class="headerlink" title="老生代内存回收机制 Mark-Sweep&amp;Mark-Compact"></a>老生代内存回收机制 Mark-Sweep&amp;Mark-Compact</h3><p>老生代中的对象就不适合使用<code>Scavenge</code>，因为会有两个问题：一个是存活对象太多，复制效率低。第二是浪费一半空间</p>
+<h4 id="Mark-Sweep标记清除"><a href="#Mark-Sweep标记清除" class="headerlink" title="Mark-Sweep标记清除"></a>Mark-Sweep标记清除</h4><p>标记清除就是将内存回收分为标记和清除两个阶段，首先遍历所有的对象并标记活着的对象，接着清理所有的死亡对象。因为老生代内存空间只有小部分是死亡对象，所以标记清除算法将比<code>Scavenge</code>算法有着更高的效率。</p>
+<p>标记清除算法最大的问题是在一次标记清除回收后，内存空间会出现不连续的状态，可能会造成后续分配大对象无可用内存的情况。</p>
+<h4 id="Mark-Compact标记整理"><a href="#Mark-Compact标记整理" class="headerlink" title="Mark-Compact标记整理"></a>Mark-Compact标记整理</h4><p>为了解决上面算法带来的内存碎片问题，<code>Mark-Compact</code>被提了出来。他最大的差别就是在标记出对象死亡后，在整理内存时将活着的对象往一段移动，移动完毕后直接清理掉边界外的内存。</p>
+<table>
+<thead>
+<tr>
+<th>回收算法</th>
+<th>Mark-Sweep</th>
+<th>Mark-Compact</th>
+<th>Scavenge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>速度</td>
+<td>中等</td>
+<td>最慢</td>
+<td>最快</td>
+</tr>
+<tr>
+<td>空间开销</td>
+<td>少(有碎片)</td>
+<td>少(无碎片)</td>
+<td>双倍空间(无碎片)</td>
+</tr>
+<tr>
+<td>是否移动对象</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h1 id="查看内存使用状况并打印内存快照"><a href="#查看内存使用状况并打印内存快照" class="headerlink" title="查看内存使用状况并打印内存快照"></a>查看内存使用状况并打印内存快照</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">process.memoryUsage()</span><br><span class="line">&#123; <span class="attr">rss</span>: <span class="number">22757376</span>,</span><br><span class="line">  heapTotal: <span class="number">7684096</span>,</span><br><span class="line">  heapUsed: <span class="number">5036952</span>,</span><br><span class="line">  external: <span class="number">8734</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>heapTotal 和 heapUsed 代表V8的内存使用情况。 external代表V8管理的，绑定到Javascript的C++对象的内存使用情况。 rss, 驻留集大小, 是给这个进程分配了多少物理内存(占总分配内存的一部分) 这些物理内存中包含堆，栈，和代码段(比如Buffer分配的内存)。</p>
+<p>对象，字符串，闭包等存于堆内存。 变量存于栈内存。</p>
+<h2 id="利用node-heapdump排查泄漏"><a href="#利用node-heapdump排查泄漏" class="headerlink" title="利用node-heapdump排查泄漏"></a>利用node-heapdump排查泄漏</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> heapdump = <span class="built_in">require</span>(<span class="string">'heapdump'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> leak = [];</span><br><span class="line">http</span><br><span class="line">  .createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> urlObj = url.parse(req.url);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (urlObj.path === <span class="string">'/leak'</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">        leak.push(<span class="string">'leak'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (urlObj.path === <span class="string">'/heapdump'</span>) &#123;</span><br><span class="line">      </span><br><span class="line">      heapdump.writeSnapshot(</span><br><span class="line">        path.resolve(__dirname, <span class="string">`<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>.heapsnapshot`</span>),</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">err, filename</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'dump written to'</span>, filename, err);</span><br><span class="line">        &#125;,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, <span class="string">'success'</span>, &#123; <span class="string">'content-type'</span>: <span class="string">'text/html;charset=utf-8;'</span> &#125;);</span><br><span class="line">    res.end(<span class="string">'成功'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>首先访问<code>/heapdump</code>然后多次访问<code>/leak</code>，接着再次访问<code>/heapdump</code>。这时候会生成两个内存快照。打开chrome dev tools。选择Memory，load生成的数据。得到比较图如下</p>
+<p><img src="https://p0.meituan.net/dpnewvc/0db2a4798109a46b44cac2e30ff0388461957.png" alt="内存比较"></p>
+<p>可以明显的发现Array数组了leak字符串大量增加,由此查找内存泄漏点</p>
+<h2 id="生产环境和pm2配合"><a href="#生产环境和pm2配合" class="headerlink" title="生产环境和pm2配合"></a>生产环境和pm2配合</h2><p><code>pm2 --max-memory-restart 300M</code>，当内存使用超过300M时，pm2会发送一个<code>SIGINT</code>信号给进程这里注意默认的<code>kill_timeout</code>超时为1600ms。这时使用如下代码判断内存是否存在溢出情况并打印内存快照</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> heapdump = <span class="built_in">require</span>(<span class="string">'heapdump'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line">process.on(<span class="string">'SIGINT'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> mem = process.memoryUsage();</span><br><span class="line">  <span class="keyword">const</span> usaged = mem.heapUsed / <span class="number">1024</span> / <span class="number">1024</span>;</span><br><span class="line">  <span class="keyword">if</span> (usaged &gt;= <span class="number">300</span>) &#123;</span><br><span class="line">    global.gc(); <span class="comment">// 触发一次gc，减少干扰</span></span><br><span class="line"></span><br><span class="line">    heapdump.writeSnapshot(path.resolve(__dirname, <span class="string">`<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>.heapsnapshot`</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">      err,</span></span></span><br><span class="line"><span class="function"><span class="params">      filename,</span></span></span><br><span class="line"><span class="function"><span class="params">    </span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'dump written to'</span>, filename, err);</span><br><span class="line">      process.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    process.exit(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/docker/" rel="next" title="初识docker">
+                <i class="fa fa-chevron-left"></i> 初识docker
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">scliuyang</p>
+              <p class="site-description motion-element" itemprop="description">学习总结 前端 全栈 web js css html node</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要研究内存控制"><span class="nav-number">1.</span> <span class="nav-text">为什么需要研究内存控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v8的垃圾回收机制与内存限制"><span class="nav-number">2.</span> <span class="nav-text">v8的垃圾回收机制与内存限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v8的内存限制"><span class="nav-number">2.1.</span> <span class="nav-text">v8的内存限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V8的垃圾回收"><span class="nav-number">2.2.</span> <span class="nav-text">V8的垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#V8的内存分代"><span class="nav-number">2.2.1.</span> <span class="nav-text">V8的内存分代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新生代内存回收机制Scavenge算法"><span class="nav-number">2.2.2.</span> <span class="nav-text">新生代内存回收机制Scavenge算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#老生代内存回收机制-Mark-Sweep-amp-Mark-Compact"><span class="nav-number">2.2.3.</span> <span class="nav-text">老生代内存回收机制 Mark-Sweep&amp;Mark-Compact</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mark-Sweep标记清除"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">Mark-Sweep标记清除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mark-Compact标记整理"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">Mark-Compact标记整理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看内存使用状况并打印内存快照"><span class="nav-number">3.</span> <span class="nav-text">查看内存使用状况并打印内存快照</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用node-heapdump排查泄漏"><span class="nav-number">3.1.</span> <span class="nav-text">利用node-heapdump排查泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产环境和pm2配合"><span class="nav-number">3.2.</span> <span class="nav-text">生产环境和pm2配合</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">scliuyang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
